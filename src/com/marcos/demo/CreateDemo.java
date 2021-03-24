@@ -21,12 +21,11 @@ public class CreateDemo
 
         try
         {
-            Instructor tempInstructor = new Instructor("Craig", "Smith", "craigS@gmail.com");
-            InstructorDetail tempInstructorDetail = new InstructorDetail("youtube.com/craigSomething", "Computer hacking skills");
-            tempInstructor.setInstructorDetail(tempInstructorDetail);
-
             session.beginTransaction();
-            session.save(tempInstructor);
+
+            int theId = 1;
+            InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, theId);
+            System.out.println("Associated Instructor: " + tempInstructorDetail.getInstructor());
 
             session.getTransaction().commit();
         }
